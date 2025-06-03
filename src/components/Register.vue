@@ -2,6 +2,7 @@
     <main class="form-signin w-25 m-auto mt-5">
         <form>
             <h1 class="h3 mb-3 fw-normal mt-3">Register</h1>
+            <ValidationError v-if="validationError" :validationError="validationError"/>
             <k-input :label="'Name'" :type="'text'" v-model="username" />
             <k-input
                 :label="'Email address'"
@@ -29,6 +30,7 @@
 import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
+import ValidationError from "./ValidationError.vue";
 
 const username = ref("");
 const email = ref("");
@@ -39,6 +41,8 @@ const store = useStore();
 const isLoading = computed(() => {
     return store.state.auth.isLoading;
 });
+
+const validationError = computed(()=> store.state.auth.errors)
 
 const submitHandler = (e) => {
     e.preventDefault();
