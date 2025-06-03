@@ -9,9 +9,11 @@
 <script setup>
 import { RouterView } from "vue-router";
 import Navbar from "@/components/Navbar.vue";
-import { onMounted } from "vue";
+import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
-onMounted(() => store.dispatch("getUser"));
+onMounted(() => {
+    store.dispatch("getUser")
+});
 </script>
 <style></style>
