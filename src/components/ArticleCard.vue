@@ -24,7 +24,8 @@
                             Delete
                         </button>
                         <button type="button" class="btn btn-sm btn-outline-secondary"
-                            v-if="article.author.username === user.username">
+                            v-if="article.author.username === user.username"
+                            @click="editArticleHandler">
                             Edit
                         </button>
                     </div>
@@ -53,6 +54,10 @@ const navigateHandler = () => {
 
 const deleteArticleHandler = () => {
     return store.dispatch('deleteArticle', props.article.slug).then(() => store.dispatch('articles'))
+}
+
+const editArticleHandler = () => {
+    return router.push(`/edit-article/${props.article.slug}`)
 }
 
 const user = computed(() => store.state.auth.user)

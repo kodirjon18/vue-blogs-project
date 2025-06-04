@@ -34,12 +34,23 @@ const actions = {
       context.commit("controlArticleStart");
       ArticleService.deleteArticle(slug)
         .then(() => {
-          context.commit("controlArticleSuccess")
-          resolve()
+          context.commit("controlArticleSuccess");
+          resolve();
         })
         .catch(() => {
           context.commit("controlArticleFailur");
         });
+    });
+  },
+  updateHandler(context, data) {
+    return new Promise((resolve) => {
+      context.commit("controlArticleStart");
+      ArticleService.updateArticle(data.article, data.slug)
+        .then(() => {
+            context.commit("controlArticleSuccess")
+            resolve()
+        })
+        .catch(() => context.commit("controlArticleFailur"));
     });
   },
 };

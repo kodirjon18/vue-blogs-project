@@ -27,6 +27,11 @@ const router = createRouter({
       path: '/create-article',
       name: 'create-article',
       component: () => import('@/views/CreateForm.vue')
+    },
+    {
+      path: '/edit-article/:slug',
+      name: 'edit-article',
+      component: () => import('@/views/EditArticle.vue')
     }
   ],
 })
