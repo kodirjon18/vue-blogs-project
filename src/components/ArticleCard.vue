@@ -26,6 +26,7 @@
                         <button
                             type="button"
                             class="btn btn-sm btn-outline-secondary"
+                            @click="navigateHandler"
                         >
                             Read
                         </button>
@@ -43,7 +44,17 @@
     </div>
 </template>
 <script setup>
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+
 const props = defineProps({
     article: Object,
 });
+
+const store = useStore()
+const router = useRouter()
+
+const navigateHandler = () => {
+    return router.push(`/article/${props.article.slug}`)
+}
 </script>
