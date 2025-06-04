@@ -22,6 +22,11 @@ const router = createRouter({
       path: '/article/:slug',
       name: 'article-details',
       component: () => import('@/views/ArticleDetail.vue')
+    },
+    {
+      path: '/create-article',
+      name: 'create-article',
+      component: () => import('@/views/CreateForm.vue')
     }
   ],
 })

@@ -10,10 +10,13 @@
             Vue Blog
         </a>
         <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-            <template v-if="isLoogedIn">
+            <template v-if="isLoogedIn"> 
                 <RouterLink :to="{name: 'home'}" class="me-3 py-2 link-body-emphasis text-decoration-none">
                     {{ user.username }}
                 </RouterLink> 
+                <RouterLink :to="{name: 'create-article'}" class="me-3 py-2 link-body-emphasis text-decoration-none">
+                    Create article
+                </RouterLink>
                 <a href="#" @click="logout" class="me-3 py-2 link-body-emphasis text-decoration-none"> Log out</a>
             </template>
             <template v-if="isAnonymous">
